@@ -1,0 +1,42 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x", "debian-openssl-3.0.x", "linux-musl", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Profile {
+  id    String @id @default(uuid())
+  email String @unique
+  Chat  Chat[]
+}
+
+model Chat {
+  id        String    @id @default(uuid())
+  name      String
+  Message   Message[]
+  owner     Profile   @relation(fields: [ownerId], references: [id])
+  ownerId   String
+  updatedAt DateTime  @updatedAt
+}
+
+model Message {
+  id        String    @id @default(uuid())
+  type      String
+  author    String
+  text      String
+  images    ImageAI[]
+  chat      Chat      @relation(fields: [chatId], references: [id])
+  chatId    String
+  updatedAt DateTime  @updatedAt
+}
+
+model ImageAI {
+  id        String  @id @default(uuid())
+  image     String
+  message   Message @relation(fields: [messageId], references: [id])
+  messageId String
+}
