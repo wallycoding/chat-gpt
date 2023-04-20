@@ -1,7 +1,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import BotIcon from "~/components/BotIcon";
+import BotIcon from "~/components/icons/BotIcon";
 import Image from "next/image";
 import { Type, User, Image as ImageIcon } from "lucide-react";
 import useMessages from "~/store/react/chat/useMessages";
