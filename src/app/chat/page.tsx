@@ -4,6 +4,7 @@ import Messages from "./components/Messages";
 
 const Chat = () => {
   const token = getCookieToken()!;
+  console.log("GET COOKIE TOKEN", token);
 
   return (
     <main className="relative flex flex-1 flex-col">
