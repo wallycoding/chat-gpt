@@ -17,6 +17,7 @@ async function fetchCreateMessage({
   authorization,
 }: CreateMessageProps) {
   try {
+    console.log(">>>!", authorization);
     const response = await fetch(api.pathnames.createMessage, {
       method: "POST",
       body: JSON.stringify({ type, text, chatId }),

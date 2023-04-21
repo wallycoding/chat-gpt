@@ -1,7 +1,6 @@
 import getCookieToken from "~/utils/getCookieToken";
 import ChatForm from "./components/ChatForm";
 import Messages from "./components/Messages";
-import { cookies } from "next/headers";
 
 const Chat = () => {
   const token = getCookieToken()!;

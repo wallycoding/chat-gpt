@@ -6,22 +6,12 @@ import getUserFromToken from "~/utils/getUserFromToken";
 import MessageAuthorEnum from "~/domain/enums/MessageAuthorEnum";
 import { Chat } from "@prisma/client";
 import MessageImageEntity from "~/domain/entities/MessageImageEntity";
+import getOpenAI from "~/config/getOpenAI";
 
 type MessageJSON = {
   type: MessageTypeEnum;
   text: string;
   chatId?: string;
-};
-
-/* 
-  Create Message
-*/
-
-const getOpenAI = () => {
-  const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
-  return new OpenAIApi(configuration);
 };
 
 export async function POST(request: Request) {
